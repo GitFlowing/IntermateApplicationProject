@@ -62,7 +62,7 @@ with col2:
                                                                         ascending = plot_ascending1).head(number_rows1)
 
     fig1 = px.scatter(total_values_per_influencer_sorted_ammount1, x='Average number of followers', y=plot_category1, color=plot_color1,
-                    hover_name='Influencer ID')
+                    hover_name='Influencer ID', color_continuous_scale=px.colors.sequential.Viridis )
 
     # Plot diagonal line
     if plot_diagonal1:
@@ -100,7 +100,7 @@ with col3:
     plot_data2 = brand_data if plot_pie_category2 == 'Brand' else date_data
     plot_theme2 =  'Influencer Type' if plot_pie_category2 == 'Brand' else 'Date'
 
-    fig2 = px.pie(plot_data2, names=plot_theme2, values=plot_category2, title=plot_category2)
+    fig2 = px.pie(plot_data2, names=plot_theme2, values=plot_category2, title=plot_category2,color_discrete_sequence=px.colors.qualitative.Safe)
 
     st.plotly_chart(fig2, use_container_width=True)
 
@@ -142,7 +142,8 @@ with col4:
                 x='Influencer ID',
                 y=plot_category3,
                 color=plot_color3,
-                category_orders={'Influencer ID': total_values_per_influencer_sorted_ammount3['Influencer ID'].tolist()}
+                category_orders={'Influencer ID': total_values_per_influencer_sorted_ammount3['Influencer ID'].tolist()},
+                color_continuous_scale=px.colors.sequential.Viridis
                 )
 
     st.plotly_chart(fig3, use_container_width=True)
